@@ -1,4 +1,6 @@
 const express = require('express');
+const helmet = require('helmet')
+const cors = require('cors')
 const routerActions = require('./RouteAction/RouteAction')
 const routerProjects = require('./RouteProject/RouteProject')
 
@@ -6,6 +8,8 @@ const server = express();
 
 // global middleware
 server.use(express.json())
+server.use(cors())
+server.use(helmet())
 server.use(logger)
 server.use('/api/actions', routerActions)
 server.use('/api/projects', routerProjects)
